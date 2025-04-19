@@ -1,17 +1,16 @@
-import{ CheckIcon, ChevronRightIcon, TrashIcon } from "lucide-react";
+import { CheckIcon, ChevronRightIcon, TrashIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 function Tasks(props) {
   const navigate = useNavigate();
   //Função que navega para a página da tarefa
 
-  function onSeeDetailsClick(task){
-    const query = new URLSearchParams()
-    query.set("title", task.title)
-    query.set("description", task.description)
+  function onSeeDetailsClick(task) {
+    const query = new URLSearchParams();
+    query.set("title", task.title);
+    query.set("description", task.description);
 
-    navigate(`/task?${query.toString()}`)
-
+    navigate(`/task?${query.toString()}`);
   }
 
   return (
@@ -24,8 +23,8 @@ function Tasks(props) {
         <li key={task.id} className="flex gap-2">
           <button
             onClick={() => props.onTaskClick(task.id)}
-            className={`bg-slate-400 text-white p-2 rounded-md w-full text-left flex items-center gap-2 ${
-              task.isCompleted && "line-through"
+            className={`bg-red-500  hover:bg-red-600 transition text-white p-2 rounded-md w-full text-left flex items-center gap-2 ${
+              task.isCompleted ? "line-through + bg-green-700" : ""
             }`}
           >
             {task.isCompleted && <CheckIcon />}
@@ -33,14 +32,13 @@ function Tasks(props) {
           </button>
 
           <button
-            onClick={() => 
-              onSeeDetailsClick(task)
-            }
-            className="bg-slate-400 text-white p-2 rounded-md">
-            <ChevronRightIcon />                                  
+            onClick={() => onSeeDetailsClick(task)}
+            className="bg-slate-400 text-white p-2 rounded-md"
+          >
+            <ChevronRightIcon />
           </button>
 
-          <button 
+          <button
             //Passa o id da tarefa para a função onTaskDelete
             //A função onTaskDelete é passada como props
             //A função onTaskDelete remove a tarefa da lista
@@ -48,9 +46,8 @@ function Tasks(props) {
             onClick={() => props.onTaskDelete(task.id)}
             className="bg-slate-400 text-white p-2 rounded-md"
           >
-            <TrashIcon />                                  
+            <TrashIcon />
           </button>
-
         </li>
       ))}
     </ul>

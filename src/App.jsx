@@ -34,16 +34,16 @@ function App() {
   }, [tasks]
   );
 
-  useEffect(() => {
-    const fetchTasks = async () => {
-      const response = await fetch("http://jsonplaceholder.typicode.com/todos?_limit=10");
-      const data = await response.json();
-      setTasks(data);
-    }
+  // useEffect(() => {
+  //   const fetchTasks = async () => {
+  //     const response = await fetch("http://jsonplaceholder.typicode.com/todos?_limit=10");
+  //     const data = await response.json();
+  //     setTasks(data);
+  //   }
 
     // fetchTasks();
 
-  }, []);
+  // }, []);
   
 
   function onTaskClick(taskId) {
