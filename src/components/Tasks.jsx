@@ -32,18 +32,20 @@ function Tasks(props) {
 
           <button
             onClick={() => onSeeDetailsClick(task)}
-            className="bg-slate-400 text-white p-2 rounded-md"
+            className="bg-slate-400 hover:bg-slate-500 transition text-white p-2 rounded-md"
           >
             <ChevronRightIcon />
           </button>
 
           <button
-            //Passa o id da tarefa para a função onTaskDelete
-            //A função onTaskDelete é passada como props
-            //A função onTaskDelete remove a tarefa da lista
-            //A função onTaskDelete é chamada quando o botão é clicado
-            onClick={() => props.onTaskDelete(task.id)}
-            className="bg-slate-400 text-white p-2 rounded-md"
+            onClick={() => {
+              if (!task.isCompleted) {
+                alert("Você só pode deletar tarefas que já foram concluídas!");
+                return;
+              }
+              props.onTaskDelete(task.id);
+            }}
+            className={`bg-slate-400 hover:bg-slate-500 transition text-white p-2 rounded-md`}
           >
             <TrashIcon />
           </button>
