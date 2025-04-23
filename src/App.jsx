@@ -47,24 +47,14 @@ function App() {
   
 
   function onTaskClick(taskId) {
-    //Cria uma nova lista de tarefas
-    //Usa o map para iterar sobre as tarefas
-    //O map retorna uma nova lista de tarefas
-    //A nova lista de tarefas é igual a lista de tarefas atual
-    //Mas, se a tarefa for a tarefa clicada, inverte o valor de isCompleted
 
     const newTasks = tasks.map((task) => {
-      //Verifica se o id da tarefa é igual ao id da tarefa clicada
-      //Se for, inverte o valor de isCompleted
-      //Se não for, retorna a tarefa sem alterações
+
 
       if (task.id === taskId) {
         return { ...task, isCompleted: !task.isCompleted };
       }
-      //Não precisa retornar nada!
-      //Se não for a tarefa clicada, retorna a tarefa sem alterações
-      //Se for a tarefa clicada, retorna a tarefa com isCompleted invertido
-
+      
       return task;
     });
     setTasks(newTasks);
